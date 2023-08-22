@@ -65,13 +65,13 @@ function Homepage() {
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="Senha" />
             </div>
-            <div  class="input-field">
-            <i class="fas fa-lock"></i>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
 
               <input type="date" placeholder="Data de nascimento" />
             </div>
-            <div  class="input-field">
-            <i class="fas fa-lock"></i>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
 
               <input placeholder="Telefone" />
             </div>
@@ -85,8 +85,9 @@ function Homepage() {
           <div class="content">
             <h3>Novo aqui?</h3>
             <p>
-              Inscreva-se e faca parte dos nossos cursos sit amet consectetur
-              adipisicing elit. Nostrum laboriosam ad deleniti.
+              Junte-se a nós se você está pronto para expandir seus horizontes,
+              adquirir novas habilidades e trilhar o caminho do aprendizado
+              contínuo
             </p>
             <button class="btn transparent" id="sign-up-btn">
               Inscreva-se
@@ -95,10 +96,10 @@ function Homepage() {
         </div>
         <div class="panel right-panel">
           <div class="content">
-            <h3>Ja es um de nos?</h3>
+            <h3>Ja é um de nós?</h3>
             <p>
-              Entre e continue conosco sit amet consectetur adipisicing elit.
-              Nostrum laboriosam ad deleniti.
+              Se você já é parte da nossa comunidade, insira suas credenciais
+              abaixo e mergulhe novamente no mundo do conhecimento.
             </p>
             <button class="btn transparent" id="sign-in-btn">
               Entrar
