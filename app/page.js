@@ -38,7 +38,7 @@ function Homepage() {
     <div className={`container ${signUpMode ? "sign-up-mode" : ""}`}>
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="#" class="sign-in-form">
+          <form action="/api/login" method="POST" class="sign-in-form">
             <h2 class="title">Entre</h2>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
