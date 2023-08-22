@@ -1,0 +1,83 @@
+"use client";
+import React from "react";
+import { useState } from "react";
+import "./Homepage.css";
+
+function Homepage() {
+  const [isLoginFormVisible, setIsLoginFormVisible] = useState(true);
+
+  const toggleForm = () => {
+    setIsLoginFormVisible(!isLoginFormVisible);
+  };
+
+  return (
+    <div>
+      <div className="toggle-buttons">
+        <button onClick={toggleForm}>
+          {isLoginFormVisible ? "I want to sign up" : "I want to login"}
+        </button>
+      </div>
+      <div className={`container ${isLoginFormVisible ? "login" : "signup"}`}>
+        <form className="SignUp">
+          <h2>Create Account</h2>
+          <div>
+            <input placeholder="Nome" />
+          </div>
+          <div>
+            <input type="email" placeholder="Email" />
+          </div>
+          <div>
+            <input type="password" placeholder="Senha" />
+          </div>
+          <div>
+            <input type="date" placeholder="Data de nascimento" />
+          </div>
+          <div>
+            <input placeholder="Telefone" />
+          </div>
+          <button type="submit">Criar Conta</button>
+        </form>
+        <form className="Login">
+          <h2>Login</h2>
+          <div>
+            <input type="email" placeholder="Email" />
+          </div>
+          <div>
+            <input type="password" placeholder="Senha" />
+          </div>
+          <button type="submit">Entrar</button>
+        </form>
+      </div>
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <h3>Novo por aqui?</h3>
+            <p>
+              Inscreva-se e entre na nossa lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Nostrum laboriosam ad deleniti.
+            </p>
+            <button class="btn transparent" id="sign-up-btn">
+              Criar Conta
+            </button>
+          </div>
+          <img src="img/log.svg" class="image" alt="" />
+        </div>
+        <div class="panel right-panel">
+          <div class="content">
+            <h3>Um de nos?</h3>
+            <p>
+              Entre e volte lorem ipsum dolor sit amet consectetur adipisicing
+              elit. Nostrum laboriosam ad deleniti.
+            </p>
+            <button id="sign-in-btn">
+              Entrar{" "}
+            </button>
+          </div>
+          <img src="img/register.svg" class="image" alt="" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Homepage;
