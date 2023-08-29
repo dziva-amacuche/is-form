@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import "./Homepage.css";
+import { collection, addDoc } from "firebase/firestore";
+import db from "./firebase.js";
 
 function Homepage() {
   const [isLoginFormVisible, setIsLoginFormVisible] = useState(true);
@@ -34,11 +36,48 @@ function Homepage() {
     };
   }, []);
 
+  const [formData, setFormData] = useState({
+    nome: "",
+    email: "",
+    senha: "",
+    dataNascimento: "",
+    telefone: "",
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (
+      formData.nome !== "" &&
+      formData.email !== "" &&
+      formData.senha !== "" &&
+      formData.dataNascimento !== "" &&
+      formData.telefone !== ""
+    ) {
+      await addDoc(collection(db, "users"), {
+        nome: formData.nome.trim(),
+        email: formData.email.trim(),
+        senha: formData.senha.trim(),
+        dataNascimento: formData.dataNascimento,
+        formData: formData.telefone.trim(),
+      });
+    }
+
+  };
+
   return (
     <div className={`container ${signUpMode ? "sign-up-mode" : ""}`}>
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="/api/login" method="POST" class="sign-in-form">
+          <form action="#" method="POST" class="sign-in-form">
             <h2 class="title">Entre</h2>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
@@ -55,27 +94,54 @@ function Homepage() {
             <h2 class="title">Inscreva-se</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Nome de usuario" />
+              <input
+                type="text"
+                placeholder="Nome de usuario"
+                name="nome"
+                value={formData.nome}
+                onChange={handleInputChange}
+              />
             </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
+              <input
+                type="email"
+                placeholder="Email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+              />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Senha" />
+              <input
+                type="password"
+                placeholder="Senha"
+                name="senha"
+                value={formData.senha}
+                onChange={handleInputChange}
+              />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-
-              <input type="date" placeholder="Data de nascimento" />
+              <input
+                type="date"
+                placeholder="Data de nascimento"
+                name="dataNascimento"
+                value={formData.dataNascimento}
+                onChange={handleInputChange}
+              />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-
-              <input placeholder="Telefone" />
+              <input
+                placeholder="Telefone"
+                name="telefone"
+                value={formData.telefone}
+                onChange={handleInputChange}
+              />{" "}
             </div>
-            <input type="submit" class="btn" value="Inscreva-se" />
+            <input onClick={handleSubmit} type="submit" class="btn" value="Inscreva-se" />
           </form>
         </div>
       </div>
